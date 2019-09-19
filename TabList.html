@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡demo</title>
+    <style>
+        html,body {
+            margin: 0;
+            padding: 0;
+        }
+        .tab-list {
+            width: 400px;
+            height: 300px;
+            position: relative;
+        }
+        .tab-head {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50px;
+            background: #ffffff;
+            display: flex;
+        }
+        .tab-item {
+            flex: 1;
+            list-style: none;
+        }
+        .tab-container {
+            position: absolute;
+            top: 50px;
+            bottom: 0;
+            width: 100%;
+            background: #00b700;
+            color: #ffffff;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tab-list">
+        <ul class="tab-head">
+            <li class="tab-item">选项卡一</li>
+            <li class="tab-item">选项卡二</li>
+            <li class="tab-item">选项卡三</li>
+        </ul>
+        <div class="tab-container">
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        var tabItems = document.querySelectorAll(".tab-item"),// 获取所有上面的选项卡
+            tabContainer = document.querySelector(".tab-container");// 获取容器的内容
+        for(var i = 0, len = tabItems.length; i < len; i++ ) {
+            tabItems[i].addEventListener("click", function (e) {
+                // 这里的e，是通过click点击的那个事件对象
+                // e.target代表点击的那个dom节点
+                console.log(e,"eventTarget");
+                tabContainer.innerText = e.target.innerText;
+
+            })
+        }
+        window.onload = function () {
+            // tabContainer.innerText("初始化选项卡的值");
+            tabContainer.innerText = tabItems[0].innerText;
+        }
+    </script>
+</body>
+</html>
