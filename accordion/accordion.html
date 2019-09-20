@@ -25,8 +25,8 @@
         }
 
         .dropContent {
-            position: absolute;
-            display: none;
+            position: relative;
+            height: 0;
             overflow: auto;
             z-index: 1;
             background: #f9f9f9;
@@ -46,7 +46,7 @@
         }
 
         .show {
-            display: block;
+            height: auto;
         }
     </style>
 </head>
@@ -84,6 +84,7 @@
     // 	e.target.nextElementSibling.classList.toggle("show");
     // });
     //
+
     // //多个节点下来就是把其他的show去掉,把点的那一个class加上show
     var dropTitles = document.querySelectorAll(".dropTittle");// 获取所有的节点
     for(var i = 0;i< dropTitles.length;i++) {
@@ -97,6 +98,35 @@
             e.target.nextElementSibling.classList.add("show");
         })
     }
+
+
+    //  改进版，如果点击的那个节点是打开的就关掉，如果是关的就打开
+    // //多个节点下来就是把其他的show去掉,把点的那一个class加上show
+    // var dropTitles = document.querySelectorAll(".dropTittle");// 获取所有的节点
+    // for(var i = 0;i< dropTitles.length;i++) {
+    //     //点击某一个节点的时候
+    //     dropTitles[i].addEventListener("click", function(e) {
+    //         加个开关，来判断当前是打开的还是关闭的
+    //         var hasShow = false;
+    //         if(e.target.nextElementSibling.classList.contains("show")) {
+    //             hasShow = true;
+    //         } else {
+    //             hasShow = false
+    //         }
+    //         //移除其他节点的show
+    //         for(var j=0;j < dropTitles.length;j++) {
+    //             dropTitles[j].nextElementSibling.classList.remove("show");
+    //         }
+    //         // 给当前节点添加或移除show
+    //         if(hasShow) {
+    //             e.target.nextElementSibling.classList.remove("show");
+    //         } else {
+    //             e.target.nextElementSibling.classList.add("show");
+    //         }
+    //     })
+    // }
+
+
 
     // 1.用好点击事件的事件对象,你知道是你点击的是哪个就ok
     // 2.原生对象最好通过querySelector或者querySelectorAll来写最好
