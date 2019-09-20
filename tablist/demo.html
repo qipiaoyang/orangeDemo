@@ -3,8 +3,72 @@
 <head>
     <meta charset="UTF-8">
     <title>demo</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.navContain{
+			width: 300px;
+			margin: 0 auto;
+			border: 1px solid aquamarine;
+			height: auto;
+		}
+		.navList{
+			list-style: none;
+			background: #7FFFD4;
+			line-height: 36px;
+			margin: 0;
+		}
+		.navList li{
+			display: inline-block;					
+			cursor: pointer;
+			padding: 0 20px;
+			color: #FFFFFF;
+		}
+		.navList li:hover{
+			color: #666;
+		}
+		.navContent{
+			height: 300px;
+			padding: 20px;
+			color: #7FFFD4;
+			letter-spacing: 5px;
+		}
+	</style>
 </head>
 <body>
-	<p>天空飘来几个字</p>
+	<dl class="navContain">
+		<dt class="navHead">
+			<ul class="navList">
+				<li class="navItem">早上</li>
+				<li class="navItem">中午</li>
+				<li class="navItem">晚上</li>
+			</ul>
+		</dt>
+		
+		<dd class="navContent">
+			
+		</dd>
+	</dl>
+	
+	<script type="text/javascript">
+		var navItems = document.querySelectorAll(".navItem"),
+			navContent = document.querySelector(".navContent"),
+			len = navItems.length;
+			// console.log(len);
+		for(var i = 0; i < len; i++){
+			navItems[i].addEventListener("click",function(e){
+				// console.log(e,"eventTarget");
+				navContent.innerText = e.target.innerText+"———吃啥啦？";
+			});
+		}
+		
+		window.onload = function(){
+			navContent.innerText = navItems[0].innerText+"———吃啥啦？";
+		}
+		
+	</script>
 </body>
+
 </html>
