@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>点击下拉菜单</title>
+    <style type="text/css">
+        .dropdowm {
+            position: relative;
+            width: 200px;
+            height: auto;
+            display: block;
+        }
+
+        .dropTittle {
+            background-color: #4CAF50;
+            color: #fff;
+            font-size: 16px;
+            padding: 15px;
+            cursor: pointer;
+        }
+
+        .dropTittle:hover,
+        .dropTittle:focus {
+            background: #00C37E;
+        }
+
+        .dropContent {
+            position: absolute;
+            display: none;
+            overflow: auto;
+            z-index: 1;
+            background: #f9f9f9;
+            box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+        }
+
+        .dropContent a {
+            display: block;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #999;
+            text-decoration: none;
+        }
+
+        .dropContent a:hover {
+            background: #EEE;
+        }
+
+        .show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div class="dropdowm">
+    <div id="dropList" class="dropTittle">一级菜单AAA</div>
+    <div class="dropContent">
+        <a href="">二级菜单A1</a>
+        <a href="">二级菜单A2</a>
+        <a href="">二级菜单A3</a>
+    </div>
+</div>
+<div class="dropdowm">
+    <div class="dropTittle">一级菜单BBB</div>
+    <div class="dropContent">
+        <a href="">二级菜单B1</a>
+        <a href="">二级菜单B2</a>
+        <a href="">二级菜单B3</a>
+    </div>
+</div>
+
+<div class="dropdowm">
+    <div class="dropTittle">一级菜单CCC</div>
+    <div class="dropContent">
+        <a href="">二级菜单C1</a>
+        <a href="">二级菜单C2</a>
+        <a href="">二级菜单C3</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    // // 单个节点的下拉
+    // var dropDiv = document.querySelector("#dropList");
+    // dropDiv.addEventListener("click",function(e) {
+    // 	e.target.nextElementSibling.classList.toggle("show");
+    // });
+    //
+    // //多个节点下来就是把其他的show去掉,把点的那一个class加上show
+    var dropTitles = document.querySelectorAll(".dropTittle");// 获取所有的节点
+    for(var i = 0;i< dropTitles.length;i++) {
+        //点击某一个节点的时候
+        dropTitles[i].addEventListener("click", function(e) {
+            //移除其他节点的show
+            for(var j=0;j < dropTitles.length;j++) {
+                dropTitles[j].nextElementSibling.classList.remove("show");
+            }
+            // 给当前节点添加show
+            e.target.nextElementSibling.classList.add("show");
+        })
+    }
+
+    // 1.用好点击事件的事件对象,你知道是你点击的是哪个就ok
+    // 2.原生对象最好通过querySelector或者querySelectorAll来写最好
+    // 3.写一个功能的时候最好把东西关联起来,比如说是点击的那个title相邻的div不显示,那样这个就可以通用了
+
+
+
+    // var dropTittles = document.getElementsByClassName("dropTittle"),
+    // 	dropContents = document.getElementsByClassName("dropContent"),
+    // 	len = dropTittles.length;
+    //
+    // for (var j = 0; j < len; j++) {
+    // 	if (dropContents[j].classList.contains("show")) {
+    // 		dropContents[j].classList.remove("show");
+    // 	}
+    // 	document.getElementById("dropCont").classList.toggle('show');
+    // }
+</script>
+</body>
+</html>
