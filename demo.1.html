@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>111111</title>
+		<style type="text/css">
+			.dropdowm{
+				position: relative;
+				width: 200px;
+				display: block;
+			}
+			.dropTittle{
+				background-color:  #4CAF50;
+				color: #fff;
+				font-size: 16px;
+				padding: 15px;
+				cursor: pointer;
+			}
+			.dropTittle:hover,.dropTittle:focus{
+				background: #00C37E;
+			}
+			.dropContent{
+				position: absolute;
+				display: none;
+				overflow: auto;
+				z-index: 1;
+				background: #f9f9f9;
+				box-shadow: 0 2px 3px 0 rgba(0,0,0,0.2);
+			}
+			.dropContent a{
+				display: block;
+				padding: 10px 20px;
+				font-size: 14px;
+				color: #999;
+				text-decoration: none;				
+			}
+			.dropContent a:hover{
+				background: #EEE;
+			}
+			.show{
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dropdowm">
+			<div class="dropTittle">一级菜单</div>
+			<div class="dropContent">
+				<a href="">二级菜单</a>
+				<a href="">二级菜单</a>
+				<a href="">二级菜单</a>
+			</div>
+		</div>
+		
+		<div class="dropdowm">
+			<div class="dropTittle">一级菜单</div>
+			<div class="dropContent">
+				<a href="">二级菜单</a>
+				<a href="">二级菜单</a>
+				<a href="">二级菜单</a>
+			</div>
+		</div>
+		
+		<div class="dropdowm">
+			<div class="dropTittle">一级菜单</div>
+			<div class="dropContent">
+				<a href="">二级菜单</a>
+				<a href="">二级菜单</a>
+				<a href="">二级菜单</a>
+			</div>
+		</div>
+		
+		<script type="text/javascript">
+			// var dropTittles = document.querySelectorAll(".dropTittle"),
+			// 	dropContents = document.querySelectorAll".dropContent"),
+			// 	len = dropTittles.length;
+			// 	
+			// onclick = function dropList(){
+			// 	document.getElementById("dropCont").classList.toggle('show');
+			// 	// document.getElementsByClassName("dropContent").classList.toggle("show");
+			// 	console.log(11);
+			// }
+			// 
+			// window.onclick = function(event){
+			// 	console.log(e,"eventTarge");
+			// 	
+			// 	if(!event.target.matches(".dropContent")){
+			// 		for(var i=0; i<len; i++){
+			// 			if(dropContents[i].classList.contains("show")){
+			// 				dropContents[i].classList.remove("show");
+			// 			}
+			// 		}
+			// 	}
+			// 	
+			// }
+			
+			;!(function(w,d){
+				var dropTittles = d.querySelectorAll(".dropTittle"),
+					dropContents = d.querySelectorAll(".dropContent"),
+					len = dropTittles.length;
+				for(var i=0; i<len; i++){
+					dropTittles[i].onclick = function(e){
+						for(var j=0;j<len;j++){
+							if(this != dropContents[j]){
+								dropContents[j].parentNode.className = dropContents[j].parentNode.className.replace( / open/i, '' );
+						var cn = this.parentNode.className;			
+						this.parentNode.className = ~cn.search( /open/i ) ? cn.replace( / open/i, '' ) : cn + ' show';
+							}
+						}
+					}
+				};
+			})(this,document);
+			
+			
+		</script>
+	</body>
+</html>
