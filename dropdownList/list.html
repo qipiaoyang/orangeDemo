@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>点击下拉菜单</title>
+		<style type="text/css">
+			.dropdowm {
+				position: relative;
+				width: 200px;
+				height: auto;
+				display: block;
+			}
+
+			.dropTittle {
+				background-color: #4CAF50;
+				color: #fff;
+				font-size: 16px;
+				padding: 15px;
+				cursor: pointer;
+			}
+
+			.dropTittle:hover,
+			.dropTittle:focus {
+				background: #00C37E;
+			}
+
+			.dropContent {
+				position: relative;
+				height: 0;
+				overflow: auto;
+				z-index: 1;
+				background: #f9f9f9;
+				box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2);
+			}
+
+			.dropContent a {
+				display: block;
+				padding: 10px 20px;
+				font-size: 14px;
+				color: #999;
+				text-decoration: none;
+			}
+
+			.dropContent a:hover {
+				background: #EEE;
+			}
+
+			.show {
+				height: auto;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dropdowm">
+			<div class="dropTittle">一级菜单AAA</div>
+			<div id="dropCont" class="dropContent">
+				<a href="">二级菜单A1</a>
+				<a href="">二级菜单A2</a>
+				<a href="">二级菜单A3</a>
+				<a href="">二级菜单A4</a>
+			</div>
+		</div>
+		<div class="dropdowm">
+			<div class="dropTittle">一级菜单BBB</div>
+			<div class="dropContent">
+				<a href="">二级菜单B1</a>
+				<a href="">二级菜单B2</a>
+				<a href="">二级菜单B3</a>
+				<a href="">二级菜单B4</a>
+			</div>
+		</div>
+
+		<div class="dropdowm">
+			<div class="dropTittle">一级菜单CCC</div>
+			<div class="dropContent">
+				<a href="">二级菜单C1</a>
+				<a href="">二级菜单C2</a>
+				<a href="">二级菜单C3</a>
+				<a href="">二级菜单C4</a>
+			</div>
+		</div>
+
+		<script type="text/javascript">
+			// var dropTittles = document.getElementsByClassName("dropTittle"),
+			// 	dropContents = document.getElementsByClassName("dropContent"),
+			// 	len = dropTittles.length;
+			// 
+			// window.onclick = function(event){
+			// 	// console.log(event,"eventTarge");
+			// 	console.log(11);
+			// 	if(!event.target.matches(".dropContent")){
+			// 		
+			// 		for(var j=0; j<len; j++){
+			// 			if(dropContents[j].classList.contains("show")){
+			// 				dropContents[j].classList.remove("show");
+			// 			}
+			// 			document.getElementById("dropCont").classList.toggle('show');
+			// 		}
+			// 		}				
+			// 	}			
+			var dropTittles = document.querySelectorAll('.dropTittle'),
+				dropContents = document.querySelectorAll('.dropContent'),
+				len = dropTittles.length,
+				hasShow = false;
+			// for(var i=0; i<len;i++){
+			// 	dropTittles[i].addEventListener("click",function(e){		
+			// 		if(e.target.nextElementSibling.classList.contains("show")){
+			// 			hasShow = true;
+			// 			// console.log(true);
+			// 		}else{
+			// 			hasShow = false;
+			// 			// console.log(false);
+			// 		}
+			// 		
+			// 		for(var j=0; j<len; j++){
+			// 			dropTittles[j].nextElementSibling.classList.remove("show");
+			// 			console.log(1);
+			// 		}
+			// 		
+			// 		 // e.target.nextElementSibling.classList.toggle("show");
+			// 		if(hasShow){
+			// 			e.target.nextElementSibling.classList.remove("show");
+			// 		}else{
+			// 			e.target.nextElementSibling.classList.add("show");
+			// 		}
+			// 			
+			// 	});
+			var person = {
+				name: "qipiaoyag",
+				age: 18
+			};
+			
+			function createPerson(name,age) {
+				this.name = name;
+				this.age = age;
+			}
+			var person1 = new createPerson("qipiaoyang1",20);
+			console.log(person1)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0;padding: 0;}
+			li{list-style: none;}
+			.navSidebar{
+				width: 200px;
+				border: 1px dotted #7FFFD4;
+				padding: 20px 15px;
+			}
+			.firstNav{
+				overflow: hidden;
+			}
+			.firstNav .firstItem{
+				background: #666;
+				color: #FFFFFF;
+				line-height: 1.5;
+				text-indent: 1em;
+				cursor: pointer;
+				/* display: none; */
+			}
+			.secondNav{
+				background: #999;
+				text-indent: 2em;
+				/* display: none; */
+			}
+			
+			.show{
+				display:block;
+			} */
+		</style>
+	</head>
+	<body>
+		<div class="navSidebar">
+			<ul class="firstNav">
+				<li class="firstItem">一级导航
+					<ul class="secondNav">
+						<li class="secondItem">我是二级导航哦</li>
+						<li class="secondItem">我是二级导航哦</li>
+						<li class="secondItem">我是二级导航哦</li>
+					</ul>
+				</li>
+				<li class="firstItem">一级导航
+					<ul class="secondNav">
+						<li class="secondItem">我是二级导航哦</li>
+						<li class="secondItem">我是二级导航哦</li>
+						<li class="secondItem">我是二级导航哦</li>
+					</ul>
+				</li>
+				<li class="firstItem">一级导航
+					<ul class="secondNav">
+						<li class="secondItem">我是二级导航哦</li>
+						<li class="secondItem">我是二级导航哦</li>
+						<li class="secondItem">我是二级导航哦</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+		
+		<script type="text/javascript">
+			var firstItems = document.querySelectorAll('.firstItem'),
+				firstLen = firstItems.length,			
+				secondItems = document.querySelectorAll('.secondItem'),
+				secondLen = secondItems.length;
+			for(i = 0; i < firstLen ; i++ ){
+				newClass = firstItems[i].getElementsByClassName('firstItem');
+				firstItems[i].addEventListener("click",function(e){
+					// if(secondItems[i].style.display =='none'){
+					// 	secondItems[i].style.display ='';
+					// }else{
+					// 	secondItems[i].style.display ='none';
+					// }
+					// 
+					
+					if(firstItems[i].style.display =='none'){
+						firstItems[i].style.display ='';
+					}else{
+						firstItems[i].style.display ='none';
+					}
+				});
+								
+			}
+			// window.onload = function(){
+			// 	document.getElementsByClassName('firstItem').style.display ='none';
+			// }
+			
+			Window.onclick = function(e){
+				
+			}
+		</script>
+	</body>
+</html>
