@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <button id="add">添加按钮</button>
+    <table>
+        <thead>
+            <th>选择</th>
+            <th>序列号</th>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>操作</th>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+
+    var dataInfo = [{
+        name: "橙子",
+        age: 18
+    },{
+        name: "pp",
+        age: 23
+    },{
+        name: "齐飘洋",
+        age: 15
+    },{
+        name: "豆豆",
+        age: 5
+    }];
+
+    /**
+     * 创建一个dom
+     * @param id
+     * @param name
+     * @param age
+     * @returns {HTMLElement}
+     */
+    function createHtml(id,name,age) {
+        var trDom = document.createElement("tr"), // 创建一列
+            checkedDom = document.createElement("td"), // 创建一个选择td
+            idDom = document.createElement("td"), // 创建一个序列td
+            nameDom = document.createElement("td"); // 创建一个姓名td
+            ageDom = document.createElement("td"), // 创建一个年龄td
+            actionDom = document.createElement("td"); // 创建一个操作td
+
+        checkedDom.innerHTML = "<input type='checkbox'/>";
+        idDom.textContent = id;
+        nameDom.textContent = name;
+        ageDom.innerText = age;
+        actionDom.innerHTML = "<button class='del_btn'>删除</button>";
+        trDom.append(checkedDom,idDom,nameDom,ageDom,actionDom);
+        return trDom;
+    }
+
+    /**
+     * 添加目标dom进tbody里面
+     * @param targetDom
+     */
+    function addToTable(targetDom) {
+        var tbody = document.querySelector("#tbody");
+        tbody.append(targetDom);
+    }
+
+    // 点击添加按钮触发的方法
+    function add() {
+        var arrItemInfo = dataInfo.shift(), //从源数组获取第一个元素
+            tbody = document.querySelector("#tbody"), // 获取tbody
+            currentId = tbody.childElementCount > 0 ? parseInt(tbody.lastElementChild.firstElementChild.nextElementSibling.textContent) + 1 : 0; // 判断tbody下面有几个子节点
+        // 判断数组里面是否有元素，有就添加，没有就alert添加完成
+        if(arrItemInfo) {
+            addToTable(createHtml(currentId,arrItemInfo.name,arrItemInfo.age));
+        } else {
+            alert("全部已经添加完成");
+        }
+    }
+
+    /**
+     *  移除一个dom
+     * @param targetDom
+     */
+    function removeFromTable(targetDom) {
+        targetDom.remove();
+    }
+
+
+    function remove(targetDom) {
+        var tbody = document.querySelector("#tbody");
+        tbody.addEventListener("click", function (e) {
+            if(e.target.className === "del_btn") {
+                var obj = Object.assign({}, {
+                    name: e.target.parentElement.previousElementSibling.textContent,
+                    age: e.target.parentElement.previousElementSibling.previousElementSibling.textContent,
+                });
+                dataInfo.push(obj);
+                e.target.parentElement.parentElement.remove();
+            }
+        })
+    }
+
+    // 添加按钮事件
+    document.querySelector("#add").addEventListener("click",function () {
+        add();
+    });
+    // 移除功能
+    remove()
+
+
+</script>
+
+</body>
+</html>
