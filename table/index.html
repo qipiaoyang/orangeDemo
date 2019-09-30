@@ -92,7 +92,10 @@
         targetDom.remove();
     }
 
-
+    /**
+     * 通过事件代理来删除功能(自己查阅资料了解一下事件代理与事件冒泡)
+     * @param targetDom
+     */
     function remove(targetDom) {
         var tbody = document.querySelector("#tbody");
         tbody.addEventListener("click", function (e) {
