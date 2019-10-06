@@ -8,6 +8,9 @@
 
 <div>
     <button id="add">添加按钮</button>
+    <button id="del">批量删除按钮</button>
+    <button id="checkAll">全选按钮</button>
+    <button id="invertAll">反选按钮</button>
     <table>
         <thead>
         <th>选择</th>
@@ -20,24 +23,6 @@
 
         </tbody>
     </table>
-    <!--<table>-->
-        <!--<thead>-->
-            <!--<th>选择</th>-->
-            <!--<th>序列号</th>-->
-            <!--<th>姓名</th>-->
-            <!--<th>年龄</th>-->
-            <!--<th>操作</th>-->
-        <!--</thead>-->
-        <!--<tbody>-->
-            <!--<tr>-->
-                <!--<td><input type='checkbox'/></td>-->
-                <!--<td>1</td>-->
-                <!--<td>chengzi</td>-->
-                <!--<td>16</td>-->
-                <!--<td><button class='del_btn'>删除</button></td>-->
-            <!--</tr>-->
-        <!--</tbody>-->
-    <!--</table>-->
 </div>
 <script type="text/javascript">
     var dataInfo = [{
@@ -84,6 +69,45 @@
     document.getElementById("add").addEventListener("click",function () {
         addToTable();
     })
+
+    // 删除功能
+    document.getElementById("tbody").addEventListener("click",function (e) {
+        if(e.target.className === "del_btn") {
+            e.target.parentElement.parentElement.remove();
+        }
+    });
+
+    // 全选的功能
+    document.getElementById("checkAll").addEventListener("click", function () {
+        document.querySelectorAll("#tbody > tr > td > input").forEach(function (item) {
+            item.checked = true;
+        });
+    })
+
+    // 反选的功能
+    document.getElementById("invertAll").addEventListener("click", function () {
+        document.querySelectorAll("#tbody > tr > td > input").forEach(function (item) {
+            if(item.checked) {
+                item.checked = false;
+            } else {
+                item.checked = true;
+            }
+        });
+    })
+
+    // 批量删除的功能
+    document.getElementById("del").addEventListener("click", function () {
+        document.querySelectorAll("#tbody > tr > td > input").forEach(function (item) {
+            if(item.checked) {
+                item.parentElement.parentElement.remove();
+            }
+        });
+    })
+
+
+
+
+
 
 
 

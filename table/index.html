@@ -7,6 +7,7 @@
 <body>
 
 <div>
+
     <button id="add">添加按钮</button>
     <button id="checkAll">全选按钮</button>
     <button id="invertAll">反选按钮</button>
@@ -53,7 +54,7 @@
             checkedDom = document.createElement("td"), // 创建一个选择td
             idDom = document.createElement("td"), // 创建一个序列td
             nameDom = document.createElement("td"); // 创建一个姓名td
-            ageDom = document.createElement("td"), // 创建一个年龄td
+        ageDom = document.createElement("td"), // 创建一个年龄td
             actionDom = document.createElement("td"); // 创建一个操作td
 
         checkedDom.innerHTML = "<input type='checkbox'/>";
@@ -138,6 +139,7 @@
         });
     }
 
+    //
     function batchRemove() {
         var inputs = document.querySelectorAll("#tbody > tr > td > input");
         inputs.forEach(function (item) {
