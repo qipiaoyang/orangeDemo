@@ -8,6 +8,9 @@
 
 <div>
     <button id="add">添加按钮</button>
+    <button id="checkAll">全选按钮</button>
+    <button id="invertAll">反选按钮</button>
+    <button id="batchRemove">批量按钮</button>
     <table>
         <thead>
             <th>选择</th>
@@ -110,12 +113,64 @@
         })
     }
 
+    /**
+     * 全选功能
+     */
+    function checkAll() {
+        var inputs = document.querySelectorAll("#tbody > tr > td > input");
+        inputs.forEach(function (item) {
+            item.checked = true;
+        });
+    }
+
+    /**
+     * 反选功能
+     */
+    function invertAll() {
+        var inputs = document.querySelectorAll("#tbody > tr > td > input");
+        inputs.forEach(function (item) {
+            if(item.checked) {
+                item.checked = false;
+
+            } else {
+                item.checked = true;
+            }
+        });
+    }
+
+    function batchRemove() {
+        var inputs = document.querySelectorAll("#tbody > tr > td > input");
+        inputs.forEach(function (item) {
+            if(item.checked) {
+                var obj = Object.assign({}, {
+                    name: item.parentElement.nextElementSibling.nextElementSibling.textContent,
+                    age: item.parentElement.nextElementSibling.nextElementSibling.nextElementSibling.textContent,
+                });
+                dataInfo.push(obj);
+                item.parentElement.parentElement.remove();
+
+            }
+        });
+    }
+
     // 添加按钮事件
     document.querySelector("#add").addEventListener("click",function () {
         add();
     });
     // 移除功能
-    remove()
+    remove();
+    // 全选功能
+    document.querySelector("#checkAll").addEventListener("click",function () {
+        checkAll();
+    });
+    // 反选功能
+    document.querySelector("#invertAll").addEventListener("click",function () {
+        invertAll();
+    });
+    // 批量删除
+    document.querySelector("#batchRemove").addEventListener("click",function () {
+        batchRemove();
+    });
 
 
 </script>

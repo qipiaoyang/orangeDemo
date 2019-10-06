@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div>
+    <button id="add">添加按钮</button>
+    <table>
+        <thead>
+        <th>选择</th>
+        <th>序列号</th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>操作</th>
+        </thead>
+        <tbody id="tbody">
+
+        </tbody>
+    </table>
+    <!--<table>-->
+        <!--<thead>-->
+            <!--<th>选择</th>-->
+            <!--<th>序列号</th>-->
+            <!--<th>姓名</th>-->
+            <!--<th>年龄</th>-->
+            <!--<th>操作</th>-->
+        <!--</thead>-->
+        <!--<tbody>-->
+            <!--<tr>-->
+                <!--<td><input type='checkbox'/></td>-->
+                <!--<td>1</td>-->
+                <!--<td>chengzi</td>-->
+                <!--<td>16</td>-->
+                <!--<td><button class='del_btn'>删除</button></td>-->
+            <!--</tr>-->
+        <!--</tbody>-->
+    <!--</table>-->
+</div>
+<script type="text/javascript">
+    var dataInfo = [{
+        name: "橙子",
+        age: 18
+    },{
+        name: "pp",
+        age: 23
+    },{
+        name: "齐飘洋",
+        age: 15
+    },{
+        name: "豆豆",
+        age: 5
+    }];
+
+    function createHtml(sort,name,age) {
+        var trDom = document.createElement("tr"),
+            checkedtdDom = document.createElement("td"),
+            sorttdDom = document.createElement("td"),
+            nametdDom = document.createElement("td"),
+            agetdDom = document.createElement("td"),
+            deltdDom = document.createElement("td");
+        checkedtdDom.innerHTML = "<input type='checkbox'/>";
+        sorttdDom.innerText = sort;
+        nametdDom.innerText = name;
+        agetdDom.innerText = age;
+        deltdDom.innerHTML = "<button class='del_btn'>删除</button>";
+        trDom.append(checkedtdDom,sorttdDom,nametdDom,agetdDom,deltdDom);
+        document.getElementById("tbody").append(trDom);
+    }
+
+    function addToTable() {
+        var dataArr = dataInfo.shift(),
+            currentId = document.getElementById("tbody").lastElementChild ? parseInt(document.getElementById("tbody").lastElementChild.firstElementChild.nextElementSibling.innerHTML) + 1 : 1;
+        if(dataArr) {
+            createHtml(currentId,dataArr.name,dataArr.age);
+        } else {
+            alert("已经全部添加完成");
+        }
+
+    }
+
+    document.getElementById("add").addEventListener("click",function () {
+        addToTable();
+    })
+
+
+
+</script>
+
+</body>
+</html>
